@@ -1,17 +1,19 @@
-@implements IAsyncDisposable
-@inject NavigationManager Navigation
-@* Add other injections as needed *@
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Routing
+@using System.Reflection
+@using Simu.Blazor.Web.Components.Layout
 
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        // Initialize component
-        await Task.CompletedTask;
-    }
+<Router AppAssembly="@typeof(Routes).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <PageTitle>Página no encontrada</PageTitle>
+        <LayoutView Layout="typeof(MainLayout)">
+            <div class="alert alert-danger">
+                <p>Lo sentimos, no hay nada en esta dirección.</p>
+            </div>
+        </LayoutView>
+    </NotFound>
+</Router>
 
-    async ValueTask IAsyncDisposable.DisposeAsync()
-    {
-        // Cleanup
-        await Task.CompletedTask;
-    }
-}

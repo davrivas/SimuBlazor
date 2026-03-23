@@ -1,5 +1,6 @@
 using Simu.Core.Entities;
 using Simu.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Simu.Data.Repositories;
 

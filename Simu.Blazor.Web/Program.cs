@@ -1,25 +1,12 @@
 using Simu.Blazor.Web.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-// Add services to the container
-builder.Services.AddRazorComponents()
-    .AddInteractiveAutoComponents();
+builder.RootComponents.Add<Routes>("#app");
 
-var app = builder.Build();
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-// Configure the HTTP request pipeline
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    app.UseHsts();
-}
+var host = builder.Build();
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseAntiforgery();
-
-app.MapRazorComponents<App>()
-    .AddInteractiveAutoRenderMode();
-
-app.Run();
+await host.RunAsync();
