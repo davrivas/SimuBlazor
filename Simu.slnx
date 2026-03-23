@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Simu.API/Simu.API.csproj" />
+  <Project Path="Simu.Blazor.Web/Simu.Blazor.Web.csproj" />
+  <Project Path="Simu.Business/Simu.Business.csproj" />
+  <Project Path="Simu.Core/Simu.Core.csproj" />
+  <Project Path="Simu.Data/Simu.Data.csproj" />
+</Solution>

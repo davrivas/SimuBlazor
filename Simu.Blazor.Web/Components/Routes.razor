@@ -1,0 +1,17 @@
+@implements IAsyncDisposable
+@inject NavigationManager Navigation
+@* Add other injections as needed *@
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        // Initialize component
+        await Task.CompletedTask;
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        // Cleanup
+        await Task.CompletedTask;
+    }
+}
