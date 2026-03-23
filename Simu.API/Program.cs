@@ -1,9 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using Simu.Data.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add SQL Server connection
+builder.Services.AddDbContext<SimuDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+
 
 var app = builder.Build();
 
